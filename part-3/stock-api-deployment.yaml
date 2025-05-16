@@ -15,6 +15,8 @@ spec:
       containers:
       - name: stock-api
         image: widgetario/stock-api:21.03
+        ports:
+        - containerPort: 80
         volumeMounts:
         - name: cache-volume
           mountPath: /cache
