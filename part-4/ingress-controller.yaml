@@ -25,4 +25,3 @@ spec:
               fieldPath: metadata.namespace
         ports:
         - containerPort: 80
-

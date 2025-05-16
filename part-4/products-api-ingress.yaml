@@ -14,4 +14,3 @@ spec:
             name: products-api
             port:
               number: 80
-
