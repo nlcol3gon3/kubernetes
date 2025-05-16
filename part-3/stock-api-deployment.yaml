@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stock-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stock-api
+  template:
+    metadata:
+      labels:
+        app: stock-api
+    spec:
+      containers:
+      - name: stock-api
+        image: widgetario/stock-api:21.03
+        volumeMounts:
+        - name: cache-volume
+          mountPath: /cache
+      volumes:
+      - name: cache-volume
+        emptyDir: {}
