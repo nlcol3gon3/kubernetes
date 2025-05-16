@@ -3,7 +3,7 @@ kind: StatefulSet
 metadata:
   name: products-db
 spec:
-  serviceName: products-db
+  serviceName: "products-db"
   replicas: 2
   selector:
     matchLabels:
@@ -14,23 +14,23 @@ spec:
         app: products-db
     spec:
       containers:
-      - name: postgres
-        image: widgetario/products-db:postgres-replicated
-        ports:
-        - containerPort: 5432
-        env:
-        - name: POSTGRES_PASSWORD
-          value: securepassword
-        - name: POSTGRES_REPLICATION_PASSWORD
-          value: securepassword
-        volumeMounts:
-        - name: db-storage
-          mountPath: /var/lib/postgresql/data
+        - name: postgres
+          image: widgetario/products-db:postgres-replicated
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_PASSWORD
+              value: SuperSecret123
+            - name: REPLICATION_PASSWORD
+              value: SuperSecret123
+          volumeMounts:
+            - name: pgdata
+              mountPath: /var/lib/postgresql/data
   volumeClaimTemplates:
-  - metadata:
-      name: db-storage
-    spec:
-      accessModes: ["ReadWriteOnce"]
-      resources:
-        requests:
-          storage: 1Gi
+    - metadata:
+        name: pgdata
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi

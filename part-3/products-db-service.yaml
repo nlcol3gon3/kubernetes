@@ -1,0 +1,25 @@
+# Headless service (for DNS discovery)
+apiVersion: v1
+kind: Service
+metadata:
+  name: products-db
+spec:
+  clusterIP: None
+  selector:
+    app: products-db
+  ports:
+    - port: 5432
+      name: postgres
+
+---
+
+# Service to access the primary DB (for Products API)
+apiVersion: v1
+kind: Service
+metadata:
+  name: products-db-primary
+spec:
+  selector:
+    statefulset.kubernetes.io/pod-name: products-db-0
+  ports:
+    - port: 5432
