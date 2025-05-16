@@ -4,7 +4,7 @@ This repository contains the solution for **Part 3: Storage** and **Part 4: Ingr
 
 ---
 
-## ✅ Part 3 - Storage
+##  Part 3 - Storage
 
 ### Overview
 - The `stock-api` application uses a local `/cache` directory for performance caching. This cache should survive Pod restarts.
@@ -18,7 +18,7 @@ This repository contains the solution for **Part 3: Storage** and **Part 4: Ingr
 
 ---
 
-## 🌐 Part 4 - Ingress
+##  Part 4 - Ingress
 
 ### Overview
 - A custom NGINX ingress controller is deployed.
